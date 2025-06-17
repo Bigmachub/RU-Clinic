@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project3.gui.ClinicManagerController">
+    <bottom>
+        <TextArea fx:id="logTextArea" prefHeight="350.0" prefWidth="1000.0" BorderPane.alignment="CENTER" editable="false" />
+    </bottom>
+    <center>
+        <TabPane fx:id="mainTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab fx:id="scheduleCancelTab" text="Schedule / Cancel">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <GridPane hgap="10" layoutX="10.0" layoutY="10.0" prefHeight="350.0" prefWidth="816.0" vgap="10">
+                                    <columnConstraints>
+                                        <ColumnConstraints halignment="RIGHT" />
+                                        <ColumnConstraints halignment="LEFT" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints maxHeight="52.0" minHeight="23.0" prefHeight="31.0" valignment="CENTER" />
+                                        <RowConstraints maxHeight="29.0" minHeight="0.0" prefHeight="21.0" valignment="CENTER" />
+                                        <RowConstraints valignment="CENTER" />
+                                        <RowConstraints valignment="CENTER" />
+                                        <RowConstraints valignment="CENTER" />
+                                        <RowConstraints valignment="CENTER" />
+                                        <RowConstraints valignment="CENTER" />
+                                        <RowConstraints valignment="CENTER" />
+                                    </rowConstraints>
+
+                                    <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                    <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                    <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                    <Label text="DOB:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                    <DatePicker fx:id="dobPicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                    <Label text="Appointment Type:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                    <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                        <RadioButton text="Office" fx:id="officeRadioButton" toggleGroup="$appointmentTypeGroup" />
+                                        <RadioButton text="Imaging" fx:id="imagingRadioButton" toggleGroup="$appointmentTypeGroup" />
+                                    </HBox>
+
+                                    <Label text="Appointment Date:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                                    <DatePicker fx:id="appointmentDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                                    <HBox alignment="CENTER_LEFT" spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                        <Label text="Provider:" />
+                                        <ComboBox fx:id="providerComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" disable="true"/>
+
+                                        <Label text="Room" />
+                                        <ComboBox fx:id="roomComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" disable = "true"/>
+
+                                        <Label text="Timeslot:" />
+                                        <ComboBox fx:id="timeslotComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                                    </HBox>
+
+                                    <HBox alignment="CENTER" layoutY="20.0" spacing="15" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                        <Button fx:id="scheduleButton" prefHeight="40.0" prefWidth="100.0" text="Schedule" onAction="#onScheduleButtonClick" />
+                                        <Button fx:id="cancelButton" prefHeight="40.0" prefWidth="100.0" text="Cancel" onAction="#onCancelButtonClick" />
+                                        <Button fx:id="loadProviderButton" prefHeight="40.0" prefWidth="100.0" text="Load Providers" onAction="#onLoadProviderButtonClick" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                                        <Button prefHeight="40.0" prefWidth="100.0" text="Clear" onAction="#onScheduleClearButtonClick" />
+                                    </HBox>
+                                </GridPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="rescheduleTab" text="Reschedule">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <GridPane hgap="10" layoutX="10.0" layoutY="10.0" prefHeight="350.0" prefWidth="816.0" vgap="10">
+                                    <columnConstraints>
+                                        <ColumnConstraints halignment="RIGHT" />
+                                        <ColumnConstraints halignment="LEFT" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints maxHeight="52.0" minHeight="23.0" prefHeight="31.0" valignment="CENTER" />
+                                        <RowConstraints maxHeight="29.0" minHeight="0.0" prefHeight="21.0" valignment="CENTER" />
+                                        <RowConstraints valignment="CENTER" />
+                                        <RowConstraints valignment="CENTER" />
+                                        <RowConstraints valignment="CENTER" />
+                                        <RowConstraints />
+                                    </rowConstraints>
+
+                                    <Label text="Appointment Date:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <DatePicker fx:id="rescheduleAppointmentDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                    <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                    <TextField fx:id="rescheduleFirstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                    <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                    <TextField fx:id="rescheduleLastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                    <Label text="DOB:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                    <DatePicker fx:id="rescheduleDobPicker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                                    <HBox alignment="CENTER_LEFT" spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                        <Label text="Old Timeslot:" />
+                                        <ComboBox fx:id="oldTimeslotComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                                        <Label text="New Timeslot:" />
+                                        <ComboBox fx:id="newTimeslotComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    </HBox>
+
+                                    <HBox alignment="CENTER" spacing="15" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                        <Button prefHeight="40.0" prefWidth="100.0" text="Reschedule" onAction="#onRescheduleButtonClick" />
+                                        <Button prefHeight="40.0" prefWidth="100.0" text="Clear" onAction="#onRescheduleClearButtonClick" />
+                                    </HBox>
+                                </GridPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Clinic Locations">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="885.0">
+                            <children>
+                                <TableView fx:id="clinicLocationsTable" prefHeight="319.0" prefWidth="1000.0">
+                                    <columns>
+                                        <TableColumn fx:id="countyColumn" prefWidth="250.0" text="County" />
+                                        <TableColumn fx:id="cityColumn" prefWidth="250.0" text="City" />
+                                        <TableColumn fx:id="zipColumn" prefWidth="250.0" text="Zip" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Menu Bar">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <HBox alignment="CENTER" prefWidth="875.0" spacing="50">
+                                    <MenuBar>
+                                        <Menu text="Appointment">
+                                            <MenuItem text="Schedule/Cancel" onAction="#onScheduleCancelMenuItemClick" />
+                                            <MenuItem text="Reschedule" onAction="#onRescheduleMenuItemClick" />
+                                        </Menu>
+                                    </MenuBar>
+                                    <MenuBar>
+                                        <Menu text="List of Appointment">
+                                            <MenuItem text="Date/Time/Provider" onAction="#onListByDateTimeProviderMenuItemClick"/>
+                                            <MenuItem text="County/Date/Time" onAction="#onListByCountyDateTimeMenuItemClick"/>
+                                            <MenuItem text="Patient/Date/Time" onAction="#onListByPatientDateTimeMenuItemClick" />
+                                            <MenuItem text="Office Appointments" onAction="#onOfficeAppointmentsMenuItemClick" />
+                                            <MenuItem text="Imaging Appointments" onAction="#onImagingAppointmentsMenuItemClick"/>
+                                        </Menu>
+                                    </MenuBar>
+                                    <MenuBar>
+                                        <Menu text="Billing Statements">
+                                            <MenuItem text="Provider Credit" onAction="#onProviderCreditMenuItemClick"/>
+                                            <MenuItem text="Patient Bills" onAction="#onPatientBillsMenuItemClick" />
+                                        </Menu>
+                                    </MenuBar>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
