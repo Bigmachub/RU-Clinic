@@ -23,7 +23,6 @@ This project is a Java-based application that allows users to create and manage 
 
 ## 🛠️ Technologies Used
 - Java (Core language)
-- JavaFX or Console-based UI (if applicable)
 - Custom Classes for Doctor, Appointment, Patient, and Schedule
 
 ## 🚀 Getting Started
